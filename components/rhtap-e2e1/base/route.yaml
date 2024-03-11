@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: rhtap-e2e1
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: rhtap-e2e1 
+  name: rhtap-e2e1
+spec:
+  port:
+    targetPort: 8081 
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: rhtap-e2e1
+    weight: 100 
